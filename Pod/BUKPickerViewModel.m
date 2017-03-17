@@ -570,8 +570,8 @@ static NSString * const kBUKPickerViewDefaultCellIdentifier = @"kBUKPickerViewDe
         _titleView.rightButton.hidden = !self.allowMultiSelect;
         __weak typeof(self) weakSelf = self;
         _titleView.leftButtonAction = ^(BUKPickerTitleView *titleView) {
-            [weakSelf.buk_itemsStack removeLastObject];
             [weakSelf.buk_pickerView pop];
+            [weakSelf.buk_itemsStack removeLastObject];
 
             UITableView *tableView = [weakSelf.buk_pickerView tableViewAtDepth:weakSelf.buk_itemsStack.count - 1];
             if (tableView) {
@@ -579,8 +579,8 @@ static NSString * const kBUKPickerViewDefaultCellIdentifier = @"kBUKPickerViewDe
             }
         };
         _titleView.rightButtonAction = ^(BUKPickerTitleView *titleView) {
-            [weakSelf buk_finishSelectionWithResult:weakSelf.buk_selectionResult];
             [weakSelf.buk_pickerView buk_dynamicHide];
+            [weakSelf buk_finishSelectionWithResult:weakSelf.buk_selectionResult];
         };
     }
 
